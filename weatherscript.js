@@ -4,6 +4,14 @@ document.getElementById("search-btn").addEventListener("click", () => {
   getWeatherByCity(city);
 });
 
+document.getElementById("city-input").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    const city = e.target.value.trim();
+    if (!city) return showError("Please enter a city name");
+    getWeatherByCity(city);
+  }
+});
+
 document.getElementById("current-location-btn").addEventListener("click", () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
